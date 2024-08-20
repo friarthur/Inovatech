@@ -14,58 +14,71 @@ body {
 
 /* Estilos do Header */
 .header {
-    background: #333;
+    background: #500983; /* Mantém o fundo cinza escuro */
     color: #fff;
     padding: 20px 0;
     text-align: center;
+    
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.logo {
+    margin-top: 5px;
+    
+    
+    background-color: #4B0082;
+     /* Cor roxa para o fundo do navbar */
+}/* Navbar Styling */
+.navbar {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding: 20px 50px;
+    background-color: #500486; /* Fundo escuro para o navbar */
 }
 
 .logo img {
-    height: 100px;
+    height: 70px; /* Ajuste de altura para o logo */
 }
 
 .nav-links {
     list-style: none;
+    display: flex;
+    gap: 20px;
 }
 
 .nav-links li {
-    display: inline;
     margin-left: 20px;
 }
 
 .nav-links a {
-    color: #fff;
+    color: #FFFFFF;
     text-decoration: none;
     font-size: 18px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .nav-links a:hover {
-    background-color: #ff6600;
-    border-radius: 15px;
-    border: none;
-    padding: 2px;
+    background-color: #FFD700; 
+    color: #1f1e1e;
+}
+
+/* Separação entre Navbar e Header */
+.header {
+    margin-top: 30px; /* Espaçamento entre navbar e header */
+    text-align: center;
 }
 
 .hero {
-    margin-top: 50px;
     padding: 50px;
-    background: #444;
+    background: #500486;
     color: #fff;
     text-align: center;
+    border-radius: 10px; /* Bordas arredondadas para o hero */
 }
 
 .hero h1 {
@@ -79,11 +92,17 @@ body {
 }
 
 .hero .btn {
-    background: #ff6600;
-    color: #fff;
+    background: #FFD700;
+    color: #000000;
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.hero .btn:hover {
+    background-color: #ebd350;
+    color: #1f1e1e;
 }
 
 /* Estilos das Seções */
@@ -95,6 +114,7 @@ section {
 section h2 {
     font-size: 36px;
     margin-bottom: 20px;
+    color: #4B0082;
 }
 
 section p {
@@ -134,10 +154,12 @@ section p {
 .card h3 {
     margin: 15px 0;
     font-size: 24px;
+    color: #4B0082;
 }
 
 .card p {
     font-size: 16px;
+    color:black;
 }
 
 /* Estilos do Formulário de Contato */
@@ -209,6 +231,40 @@ section p {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
+    flex-direction: column;
+}
+
+.chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.chatbot-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #007bff; /* Cor do botão */
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chatbox {
+    display: none;
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    width: 300px;
+    max-height: 400px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 }
 
 .chatbox-header {
@@ -233,6 +289,8 @@ section p {
     padding: 10px;
     max-height: 300px;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .chat-message {
@@ -261,6 +319,72 @@ section p {
     text-decoration: underline;
 }
 
+.chatbox-footer {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+.typing {
+    font-style: italic;
+    color: gray;
+    display: none;
+    margin-bottom: 10px;
+}
+
+.chat-options {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.chat-options li {
+    margin: 5px 0;
+}
+
+.chat-options a {
+    display: inline-block;
+    background-color: #007bff; /* Cor de fundo dos botões */
+    color: white; /* Cor do texto */
+    padding: 8px 15px; /* Espaçamento interno */
+    border-radius: 20px; /* Bordas arredondadas */
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px; /* Tamanho da fonte */
+    cursor: pointer; /* Mãozinha ao passar o mouse */
+    transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
+}
+
+.chat-options a:hover {
+    background-color: #0056b3; /* Cor ao passar o mouse */
+}
+
+.chat-options a:active {
+    transform: scale(0.98); /* Efeito de clique */
+}
+
+.chat-message.bot-message button {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.chat-message.bot-message button:hover {
+    background-color: #0056b3;
+}
+
+.chat-message.bot-message button:active {
+    transform: scale(0.98);
+}
+
+
+
 
 .footer {
     background-color: #f8f9fa;
@@ -283,13 +407,14 @@ section p {
 .social-links a {
     margin: 0 10px;
     text-decoration: none;
-    color: #007bff;
+    color: #070707;
     font-size: 16px;
     transition: color 0.3s ease;
 }
 
 .social-links a:hover {
-    color: #0056b3;
+    text-decoration: underline;
+    color: rgb(23, 102, 248);
 }
 /* Responsividade para dispositivos móveis */
 @media (max-width: 768px) {
@@ -333,13 +458,39 @@ section p {
     }
 
     .chatbox {
-        width: 100%;
-        max-height: 300px;
+        width: 90%; /* Aumenta a largura da caixa de chat para 90% da largura da tela */
+        right: 5%; /* Centraliza horizontalmente na tela */
+        bottom: 10px; /* Ajusta a posição inferior */
+        max-height: 70%; /* Ajusta a altura máxima para 70% da altura da tela */
     }
 
     .chatbox-header {
-        font-size: 14px;
+        font-size: 14px; /* Reduz o tamanho da fonte no cabeçalho */
+        padding: 8px; /* Ajusta o espaçamento interno */
     }
+
+    .chatbox-footer {
+        padding: 8px; /* Ajusta o espaçamento interno na parte inferior */
+    }
+
+    .chatbot-btn {
+        width: 40px; /* Reduz o tamanho do botão do chatbot */
+        height: 40px; /* Reduz o tamanho do botão do chatbot */
+        font-size: 20px; /* Ajusta o tamanho da fonte do ícone */
+    }
+
+    .chatbox-body {
+        padding: 8px; /* Reduz o padding interno para economizar espaço */
+    }
+
+    .chatbox-footer input {
+        font-size: 14px; /* Ajusta o tamanho da fonte no campo de entrada */
+    }
+
+    .chatbox-footer button {
+        font-size: 14px; /* Ajusta o tamanho da fonte no botão de envio */
+    }
+
 }
 
 /* Responsividade para tablets */
